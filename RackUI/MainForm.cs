@@ -50,6 +50,7 @@ namespace RackUI
 			{
 				var propertyName = textBox.Key;
 				//рефликсия
+				//TODO: рефлексия - зло, переделать
 				var property = _parameters.GetType().GetProperty(propertyName.ToString());
 				textBox.Value.Text = property?.GetValue(_parameters).ToString();
 			}
@@ -100,7 +101,8 @@ namespace RackUI
 				textBox.Value.BackColor = Color.White;
 				double.TryParse(textBox.Value.Text, NumberStyles.Float,
 					CultureInfo.InvariantCulture, out var value);
-				var property = _parameters.GetType().GetProperty(textBox.Key.ToString());
+                //TODO: рефлексия - зло, переделать
+                var property = _parameters.GetType().GetProperty(textBox.Key.ToString());
 				if (property.PropertyType == typeof(int))
 				{
 					property?.SetValue(_parameters, (int)value);
@@ -125,6 +127,7 @@ namespace RackUI
 		{
 			var textbox = (TextBox)sender;
 			CheckValue();
+			//TODO: Не должно быть в GUI
 		if (textbox == TextBoxDictionary[ParameterNames.WidthHooks])
 			{
 				labelWidthRackValue.Text = $"(от {_parameters.AmtHooks * _parameters.WidthHooks + 100} до " +
