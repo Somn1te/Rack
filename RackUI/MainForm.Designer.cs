@@ -47,9 +47,9 @@ namespace RackUI
 			this.labelAmtHooksValue = new System.Windows.Forms.Label();
 			this.labelWidthHooksValue = new System.Windows.Forms.Label();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.sampleImage = new System.Windows.Forms.PictureBox();
 			this.labelLengthSupportValue = new System.Windows.Forms.Label();
 			this.labelWidthRackValue = new System.Windows.Forms.Label();
-			this.sampleImage = new System.Windows.Forms.PictureBox();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.sampleImage)).BeginInit();
 			this.SuspendLayout();
@@ -60,9 +60,9 @@ namespace RackUI
 			this.labelHeight.Location = new System.Drawing.Point(4, 11);
 			this.labelHeight.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.labelHeight.Name = "labelHeight";
-			this.labelHeight.Size = new System.Drawing.Size(138, 20);
+			this.labelHeight.Size = new System.Drawing.Size(153, 20);
 			this.labelHeight.TabIndex = 0;
-			this.labelHeight.Text = "Высота стойки H";
+			this.labelHeight.Text = "Высота вешалки H";
 			// 
 			// labelWidthSupport
 			// 
@@ -100,9 +100,9 @@ namespace RackUI
 			this.labelWidthRack.Location = new System.Drawing.Point(4, 206);
 			this.labelWidthRack.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.labelWidthRack.Name = "labelWidthRack";
-			this.labelWidthRack.Size = new System.Drawing.Size(136, 20);
+			this.labelWidthRack.Size = new System.Drawing.Size(151, 20);
 			this.labelWidthRack.TabIndex = 4;
-			this.labelWidthRack.Text = "Ширина стойки L";
+			this.labelWidthRack.Text = "Ширина вешалки L";
 			// 
 			// labelLengthSupport
 			// 
@@ -110,9 +110,9 @@ namespace RackUI
 			this.labelLengthSupport.Location = new System.Drawing.Point(4, 254);
 			this.labelLengthSupport.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.labelLengthSupport.Name = "labelLengthSupport";
-			this.labelLengthSupport.Size = new System.Drawing.Size(180, 20);
+			this.labelLengthSupport.Size = new System.Drawing.Size(195, 20);
 			this.labelLengthSupport.TabIndex = 5;
-			this.labelLengthSupport.Text = "Длина опоры стойки S";
+			this.labelLengthSupport.Text = "Длина опоры вешалки S";
 			// 
 			// textBoxHeigthRack
 			// 
@@ -257,6 +257,17 @@ namespace RackUI
 			this.panel1.Size = new System.Drawing.Size(654, 394);
 			this.panel1.TabIndex = 17;
 			// 
+			// sampleImage
+			// 
+			this.sampleImage.Image = global::RackUI.Properties.Resources.RackIMG;
+			this.sampleImage.Location = new System.Drawing.Point(326, 6);
+			this.sampleImage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.sampleImage.Name = "sampleImage";
+			this.sampleImage.Size = new System.Drawing.Size(324, 378);
+			this.sampleImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.sampleImage.TabIndex = 19;
+			this.sampleImage.TabStop = false;
+			// 
 			// labelLengthSupportValue
 			// 
 			this.labelLengthSupportValue.AutoSize = true;
@@ -278,17 +289,6 @@ namespace RackUI
 			this.labelWidthRackValue.Size = new System.Drawing.Size(61, 20);
 			this.labelWidthRackValue.TabIndex = 17;
 			this.labelWidthRackValue.Text = "(от до)";
-			// 
-			// sampleImage
-			// 
-			this.sampleImage.Image = global::RackUI.Properties.Resources.RackIMG;
-			this.sampleImage.Location = new System.Drawing.Point(326, 6);
-			this.sampleImage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-			this.sampleImage.Name = "sampleImage";
-			this.sampleImage.Size = new System.Drawing.Size(324, 378);
-			this.sampleImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.sampleImage.TabIndex = 19;
-			this.sampleImage.TabStop = false;
 			// 
 			// MainForm
 			// 
