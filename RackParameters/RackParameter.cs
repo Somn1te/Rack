@@ -19,12 +19,12 @@ namespace RackParameters
 		private Parameter<double> _widthSupport;
 
 		/// <summary>
-		/// Количество разделителей
+		/// Количество крючков
 		/// </summary>
 		private Parameter<int> _AmtHooks;
 
 		/// <summary>
-		/// Ширина разделителей
+		/// Ширина между крючками
 		/// </summary>
 		private Parameter<double> _WidthHooks;
 
@@ -81,19 +81,19 @@ namespace RackParameters
 		}
 
 		/// <summary>
-		/// Свойство, обрабатывающее поле количества разделителей
+		/// Свойство, обрабатывающее поле количества крючков
 		/// </summary>
 		public int AmtHooks
 		{
 			get =>_AmtHooks.Value;
 			set
 			{
-				const int MIN_AMT_SEPARATORS = 2;
-				const int MAX_AMT_SEPARATORS = 7;
+				const int MIN_AMT_HOOKS = 2;
+				const int MAX_AMT_HOOKS = 7;
 				try
 				{
 					_AmtHooks = new Parameter<int>(ParameterNames.AmtHooks,
-						MAX_AMT_SEPARATORS, MIN_AMT_SEPARATORS, value);
+						MAX_AMT_HOOKS, MIN_AMT_HOOKS, value);
 				}
 				catch (Exception ex)
 				{
@@ -104,17 +104,17 @@ namespace RackParameters
 		}
 
 		/// <summary>
-		/// Свойство, обрабатывающее поле ширины разделителей
+		/// Свойство, обрабатывающее поле ширины крючков
 		/// </summary>
 		public double WidthHooks
 		{
 			get => _WidthHooks.Value;
 			set
 			{
-				const double MIN_WIDTH_SEPARATORS = 50;
-				const double MAX_WIDTH_SEPARATORS = 100;
+				const double MIN_WIDTH_HOOKS = 50;
+				const double MAX_WIDTH_HOOKS = 100;
 				_WidthHooks = SetValue(ParameterNames.WidthHooks,
-					MAX_WIDTH_SEPARATORS, MIN_WIDTH_SEPARATORS, value);
+					MAX_WIDTH_HOOKS, MIN_WIDTH_HOOKS, value);
 			}
 		}
 
