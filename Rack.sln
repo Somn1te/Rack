@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32126.315
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RackUI", "RackUI\RackUI.csproj", "{6714E15E-7836-42BD-8AA9-1F8EFE81A77C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RackParameters", "RackParameters\RackParameters.csproj", "{5917A2FA-EB52-455B-8554-02C4C6DBA121}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RackBuilder", "RackBuilder\RackBuilder.csproj", "{2E061F3B-95E1-4689-B692-2346B73352B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RackTests", "RackTests\RackTests.csproj", "{27A9CA7D-3436-4F16-AC6F-E94029A10044}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{2E061F3B-95E1-4689-B692-2346B73352B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E061F3B-95E1-4689-B692-2346B73352B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E061F3B-95E1-4689-B692-2346B73352B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27A9CA7D-3436-4F16-AC6F-E94029A10044}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27A9CA7D-3436-4F16-AC6F-E94029A10044}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27A9CA7D-3436-4F16-AC6F-E94029A10044}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27A9CA7D-3436-4F16-AC6F-E94029A10044}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

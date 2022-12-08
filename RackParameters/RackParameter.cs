@@ -21,12 +21,12 @@ namespace RackParameters
 		/// <summary>
 		/// Количество крючков
 		/// </summary>
-		private Parameter<int> _AmtHooks;
+		private Parameter<int> _amtHooks;
 
 		/// <summary>
 		/// Ширина между крючками
 		/// </summary>
-		private Parameter<double> _WidthHooks;
+		private Parameter<double> _widthHooks;
 
 		/// <summary>
 		/// Ширина стойки
@@ -85,14 +85,14 @@ namespace RackParameters
 		/// </summary>
 		public int AmtHooks
 		{
-			get =>_AmtHooks.Value;
+			get =>_amtHooks.Value;
 			set
 			{
 				const int MIN_AMT_HOOKS = 2;
 				const int MAX_AMT_HOOKS = 7;
 				try
 				{
-					_AmtHooks = new Parameter<int>(ParameterNames.AmtHooks,
+					_amtHooks = new Parameter<int>(ParameterNames.AmtHooks,
 						MAX_AMT_HOOKS, MIN_AMT_HOOKS, value);
 				}
 				catch (Exception ex)
@@ -108,12 +108,12 @@ namespace RackParameters
 		/// </summary>
 		public double WidthHooks
 		{
-			get => _WidthHooks.Value;
+			get => _widthHooks.Value;
 			set
 			{
 				const double MIN_WIDTH_HOOKS = 50;
 				const double MAX_WIDTH_HOOKS = 100;
-				_WidthHooks = SetValue(ParameterNames.WidthHooks,
+				_widthHooks = SetValue(ParameterNames.WidthHooks,
 					MAX_WIDTH_HOOKS, MIN_WIDTH_HOOKS, value);
 			}
 		}
@@ -126,8 +126,8 @@ namespace RackParameters
 			get => _widthRack.Value;
 			set
 			{
-				double minWidthRack = AmtHooks * WidthHooks + 100 ;
-				double maxWidthRack = AmtHooks * WidthHooks + 150;
+				double minWidthRack = DependenciesHelper.GetWidthRackMinValue(AmtHooks, WidthHooks);
+				double maxWidthRack = DependenciesHelper.GetWidthRackMaxValue(AmtHooks, WidthHooks);
 				_widthRack = SetValue(ParameterNames.WidthRack,
 					maxWidthRack, minWidthRack, value);
 			}
@@ -142,7 +142,7 @@ namespace RackParameters
 			set
 			{
 				const double MIN_LENGTH_SUPPORT = 400;
-				double maxLengthSupport = WidthSupport + 250;
+				double maxLengthSupport = DependenciesHelper.GetLengthSupportMaxValue(WidthSupport);
 				_lengthSupport = SetValue(ParameterNames.LengthSupport,
 					maxLengthSupport, MIN_LENGTH_SUPPORT, value);
 			}
@@ -158,7 +158,7 @@ namespace RackParameters
 				{
 					{ParameterNames.HeightRack, _heightRack},
 					{ParameterNames.WidthSupport, _widthSupport},
-					{ParameterNames.WidthHooks, _WidthHooks},
+					{ParameterNames.WidthHooks, _widthHooks},
 					{ParameterNames.WidthRack, _widthRack},
 					{ParameterNames.LengthSupport, _lengthSupport}
 				};

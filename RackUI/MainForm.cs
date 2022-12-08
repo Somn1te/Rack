@@ -49,10 +49,28 @@ namespace RackUI
 			foreach (var textBox in TextBoxDictionary)
 			{
 				var propertyName = textBox.Key;
-				//рефликсия
 				//TODO: рефлексия - зло, переделать
-				var property = _parameters.GetType().GetProperty(propertyName.ToString());
-				textBox.Value.Text = property?.GetValue(_parameters).ToString();
+				switch (propertyName)
+				{
+					case ParameterNames.HeightRack:
+						textBox.Value.Text = _parameters.HeightRack.ToString();
+						break;
+					case ParameterNames.LengthSupport:
+						textBox.Value.Text = _parameters.LengthSupport.ToString();
+						break;
+					case ParameterNames.WidthSupport:
+						textBox.Value.Text = _parameters.WidthSupport.ToString();
+						break;
+					case ParameterNames.AmtHooks:
+						textBox.Value.Text = _parameters.AmtHooks.ToString();
+						break;
+					case ParameterNames.WidthHooks:
+						textBox.Value.Text = _parameters.WidthHooks.ToString();
+						break;
+					case ParameterNames.WidthRack:
+						textBox.Value.Text = _parameters.WidthRack.ToString();
+						break;
+				}
 			}
 		}
 
@@ -101,16 +119,30 @@ namespace RackUI
 				textBox.Value.BackColor = Color.White;
 				double.TryParse(textBox.Value.Text, NumberStyles.Float,
 					CultureInfo.InvariantCulture, out var value);
-                //TODO: рефлексия - зло, переделать
-                var property = _parameters.GetType().GetProperty(textBox.Key.ToString());
-				if (property.PropertyType == typeof(int))
+				var propertyName = textBox.Key;
+				//TODO: рефлексия - зло, переделать
+				switch (propertyName)
 				{
-					property?.SetValue(_parameters, (int)value);
+					case ParameterNames.HeightRack:
+						_parameters.HeightRack = value ;
+						break;
+					case ParameterNames.LengthSupport:
+						_parameters.LengthSupport = value ;
+						break;
+					case ParameterNames.WidthSupport:
+						_parameters.WidthSupport = value;
+						break;
+					case ParameterNames.AmtHooks:
+						_parameters.AmtHooks = (int)value;
+						break;
+					case ParameterNames.WidthHooks:
+						_parameters.WidthHooks = value;
+						break;
+					case ParameterNames.WidthRack:
+						_parameters.WidthRack = value;
+						break;
 				}
-				else
-				{
-					property?.SetValue(_parameters, value);
-				}
+
 				if (_parameters.ErrorsDictionary.ContainsKey(textBox.Key))
 				{
 					textBox.Value.BackColor = Color.IndianRed;
@@ -128,17 +160,29 @@ namespace RackUI
 			var textbox = (TextBox)sender;
 			CheckValue();
 			//TODO: Не должно быть в GUI
-		if (textbox == TextBoxDictionary[ParameterNames.WidthHooks])
+
+			var widthRackMaxValue = DependenciesHelper.GetWidthRackMaxValue(
+				_parameters.AmtHooks, _parameters.WidthHooks);
+			var widthRackMinValue = DependenciesHelper.GetWidthRackMinValue(
+				_parameters.AmtHooks, _parameters.WidthHooks);
+			var lengthSupportMaxValue = DependenciesHelper.GetLengthSupportMaxValue(
+				_parameters.WidthSupport);
+
+			if (textbox == TextBoxDictionary[ParameterNames.WidthHooks])
 			{
-				labelWidthRackValue.Text = $"(от {_parameters.AmtHooks * _parameters.WidthHooks + 100} до " +
-				                           $"{_parameters.AmtHooks * _parameters.WidthHooks + 150} мм)";
-				labelLengthSupportValue.Text = $"(от 400 до {_parameters.WidthSupport + 250} мм)";
+				labelWidthRackValue.Text = $"(от {widthRackMinValue} до " +
+				                           $"{widthRackMaxValue} мм)";
+			}
+
+			if (textbox == TextBoxDictionary[ParameterNames.WidthSupport])
+			{
+				labelLengthSupportValue.Text = $"(от 400 до {lengthSupportMaxValue} мм)";
 			}
 
 			if (textbox == TextBoxDictionary[ParameterNames.AmtHooks])
 			{
-				labelWidthRackValue.Text = $"(от {_parameters.AmtHooks * _parameters.WidthHooks + 100} до " +
-				                           $"{_parameters.WidthHooks * _parameters.AmtHooks + 150} мм)";
+				labelWidthRackValue.Text = $"(от {widthRackMinValue} до " +
+				                           $"{widthRackMaxValue} мм)";
 			}
 
 		}
@@ -152,7 +196,7 @@ namespace RackUI
 		{
 			if (_parameters.ErrorsDictionary.Any())
 			{
-				MessageBox.Show("Проверьте правильность ввода данных", "Ошибка", MessageBoxButtons.OK,
+				MessageBox.Show("Проверьте правильность ввода данных ", "Ошибка", MessageBoxButtons.OK,
 					MessageBoxIcon.Error);
 			}
 			else

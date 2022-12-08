@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DependenciesHelper.cs" />
     <Compile Include="Parameter.cs" />
     <Compile Include="ParameterNames.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
