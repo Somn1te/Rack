@@ -9,6 +9,10 @@ namespace RackParameters
 	public class RackParameter
 	{
 		/// <summary>
+		/// Ширина подставки для обуви
+		/// </summary>
+		private Parameter<double> _lengthStand;
+		/// <summary>
 		/// Высота стойки
 		/// </summary>
 		private Parameter<double> _heightRack;
@@ -134,6 +138,22 @@ namespace RackParameters
 		}
 
 		/// <summary>
+		/// Свойство, обрабатывающее поле ширина подставки для обуви
+		/// </summary>
+		public double LengthStand
+		{
+
+			get => _lengthStand.Value;
+			set
+			{
+				const double MIN_LENGTH_STAND = 100;
+				double MAX_LENGTH_STAND = DependenciesHelper.GetLengthStandMaxValue(WidthRack);
+				_lengthStand = SetValue(ParameterNames.LengthStand,
+					MAX_LENGTH_STAND, MIN_LENGTH_STAND, value);
+			}
+		}
+
+		/// <summary>
 		/// Свойство, обрабатывающее поле длины опоры стойки
 		/// </summary>
 		public double LengthSupport
@@ -160,7 +180,8 @@ namespace RackParameters
 					{ParameterNames.WidthSupport, _widthSupport},
 					{ParameterNames.WidthHooks, _widthHooks},
 					{ParameterNames.WidthRack, _widthRack},
-					{ParameterNames.LengthSupport, _lengthSupport}
+					{ParameterNames.LengthSupport, _lengthSupport},
+					{ParameterNames.LengthStand, _lengthStand}
 				};
 			HeightRack = 1000;
 			WidthSupport = 200;
@@ -168,6 +189,7 @@ namespace RackParameters
 			WidthHooks = 50;
 			WidthRack = 200;
 			LengthSupport = 400;
+			LengthStand = 100;
 		}
 		
 		/// <summary>

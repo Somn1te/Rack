@@ -21,5 +21,12 @@ namespace RackParameters
 		{
 			return widthSupport + 250;
 		}
+
+		public static double GetLengthStandMaxValue(double widthRack)
+		{
+			return widthRack - 80;
+		}
+
+
 	}
 }

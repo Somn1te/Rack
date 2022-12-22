@@ -35,7 +35,8 @@ namespace RackUI
 				{ParameterNames.AmtHooks, textBoxAmtHooks},
 				{ParameterNames.WidthHooks, textBoxWidthHooks},
 				{ParameterNames.WidthRack, textBoxWidthRack},
-				{ParameterNames.LengthSupport, textBoxLengthSupport}
+				{ParameterNames.LengthSupport, textBoxLengthSupport},
+				{ParameterNames.LengthStand, textBoxLengthStand}
 			};
 			SetDefault();
 		}
@@ -69,6 +70,9 @@ namespace RackUI
 						break;
 					case ParameterNames.WidthRack:
 						textBox.Value.Text = _parameters.WidthRack.ToString();
+						break;
+					case ParameterNames.LengthStand:
+						textBox.Value.Text = _parameters.LengthStand.ToString();
 						break;
 				}
 			}
@@ -141,6 +145,9 @@ namespace RackUI
 					case ParameterNames.WidthRack:
 						_parameters.WidthRack = value;
 						break;
+					case ParameterNames.LengthStand:
+						_parameters.LengthStand = value;
+						break;
 				}
 
 				if (_parameters.ErrorsDictionary.ContainsKey(textBox.Key))
@@ -167,11 +174,15 @@ namespace RackUI
 				_parameters.AmtHooks, _parameters.WidthHooks);
 			var lengthSupportMaxValue = DependenciesHelper.GetLengthSupportMaxValue(
 				_parameters.WidthSupport);
+			var lengthStandMaxValue = DependenciesHelper.GetLengthStandMaxValue(
+				_parameters.WidthRack); 
 
 			if (textbox == TextBoxDictionary[ParameterNames.WidthHooks])
 			{
 				labelWidthRackValue.Text = $"(от {widthRackMinValue} до " +
 				                           $"{widthRackMaxValue} мм)";
+				labelLengthStandValue.Text = $"(от 100 до " +
+										   $"{lengthStandMaxValue} мм)";
 			}
 
 			if (textbox == TextBoxDictionary[ParameterNames.WidthSupport])
@@ -183,6 +194,14 @@ namespace RackUI
 			{
 				labelWidthRackValue.Text = $"(от {widthRackMinValue} до " +
 				                           $"{widthRackMaxValue} мм)";
+				labelLengthStandValue.Text = $"(от 100 до " +
+										   $"{lengthStandMaxValue} мм)";
+			}
+
+			if (textbox == TextBoxDictionary[ParameterNames.WidthRack])
+			{
+				labelLengthStandValue.Text = $"(от 100 до " +
+										   $"{lengthStandMaxValue} мм)";
 			}
 
 		}
@@ -205,6 +224,5 @@ namespace RackUI
 				rackBuilder.Build();
 			}
 		}
-
 	}
 }

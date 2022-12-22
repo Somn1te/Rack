@@ -28,6 +28,8 @@ namespace RackTests
 				TestName = "Позитивный - корректное значение ширины опоры")]
 			[TestCase(50, ParameterNames.WidthHooks,
 				TestName = "Позитивный - корректное значение ширины между крючками")]
+			[TestCase(101, ParameterNames.LengthStand,
+				TestName = "Позитивный - корректное значение подставки для обуви")]
 
 			public void TestCorrectParametersValveSet(double value, ParameterNames name)
 			{
@@ -60,6 +62,8 @@ namespace RackTests
 				TestName = "Позитивный - ширина опоры больше допустимого")]
 			[TestCase(500, ParameterNames.WidthHooks,
 				TestName = "Позитивный - ширина между крючками больше допустимого")]
+			[TestCase(5000, ParameterNames.LengthStand,
+				TestName = "Позитивный - длина подставки больше допустимого")]
 
 			[TestCase(1, ParameterNames.AmtHooks,
 				TestName = "Позитивный - количество крючков меньше допустимого")]
@@ -73,6 +77,8 @@ namespace RackTests
 				TestName = "Позитивный - ширина опоры меньше допустимого")]
 			[TestCase(5, ParameterNames.WidthHooks,
 				TestName = "Позитивный - ширина между крючками меньше допустимого")]
+			[TestCase(5, ParameterNames.LengthStand,
+				TestName = "Позитивный - длина подставки меньше допустимого")]
 			public void TestIncorrectParametersValveSet(double value, ParameterNames name)
 			{
 				_testRackParameters = new RackParameter();

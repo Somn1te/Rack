@@ -47,6 +47,9 @@ namespace RackUI
 			this.labelAmtHooksValue = new System.Windows.Forms.Label();
 			this.labelWidthHooksValue = new System.Windows.Forms.Label();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.labelLengthStandValue = new System.Windows.Forms.Label();
+			this.textBoxLengthStand = new System.Windows.Forms.TextBox();
+			this.labelLengthStand = new System.Windows.Forms.Label();
 			this.sampleImage = new System.Windows.Forms.PictureBox();
 			this.labelLengthSupportValue = new System.Windows.Forms.Label();
 			this.labelWidthRackValue = new System.Windows.Forms.Label();
@@ -176,7 +179,7 @@ namespace RackUI
 			// 
 			// buttonBuild
 			// 
-			this.buttonBuild.Location = new System.Drawing.Point(82, 318);
+			this.buttonBuild.Location = new System.Drawing.Point(82, 363);
 			this.buttonBuild.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.buttonBuild.Name = "buttonBuild";
 			this.buttonBuild.Size = new System.Drawing.Size(146, 52);
@@ -231,6 +234,9 @@ namespace RackUI
 			// 
 			// panel1
 			// 
+			this.panel1.Controls.Add(this.labelLengthStandValue);
+			this.panel1.Controls.Add(this.textBoxLengthStand);
+			this.panel1.Controls.Add(this.labelLengthStand);
 			this.panel1.Controls.Add(this.sampleImage);
 			this.panel1.Controls.Add(this.labelLengthSupportValue);
 			this.panel1.Controls.Add(this.buttonBuild);
@@ -254,8 +260,40 @@ namespace RackUI
 			this.panel1.Location = new System.Drawing.Point(4, 3);
 			this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(654, 394);
+			this.panel1.Size = new System.Drawing.Size(654, 444);
 			this.panel1.TabIndex = 17;
+			// 
+			// labelLengthStandValue
+			// 
+			this.labelLengthStandValue.AutoSize = true;
+			this.labelLengthStandValue.ForeColor = System.Drawing.SystemColors.ControlDark;
+			this.labelLengthStandValue.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+			this.labelLengthStandValue.Location = new System.Drawing.Point(24, 325);
+			this.labelLengthStandValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.labelLengthStandValue.Name = "labelLengthStandValue";
+			this.labelLengthStandValue.Size = new System.Drawing.Size(92, 20);
+			this.labelLengthStandValue.TabIndex = 22;
+			this.labelLengthStandValue.Text = "(от 100 до)";
+			// 
+			// textBoxLengthStand
+			// 
+			this.textBoxLengthStand.Location = new System.Drawing.Point(242, 300);
+			this.textBoxLengthStand.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+			this.textBoxLengthStand.Name = "textBoxLengthStand";
+			this.textBoxLengthStand.Size = new System.Drawing.Size(73, 26);
+			this.textBoxLengthStand.TabIndex = 21;
+			this.textBoxLengthStand.TextChanged += new System.EventHandler(this.Textbox_TextChanged);
+			this.textBoxLengthStand.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Textbox_KeyPress);
+			// 
+			// labelLengthStand
+			// 
+			this.labelLengthStand.AutoSize = true;
+			this.labelLengthStand.Location = new System.Drawing.Point(4, 305);
+			this.labelLengthStand.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.labelLengthStand.Name = "labelLengthStand";
+			this.labelLengthStand.Size = new System.Drawing.Size(237, 20);
+			this.labelLengthStand.TabIndex = 20;
+			this.labelLengthStand.Text = "Длина подсавки для обуви L2";
 			// 
 			// sampleImage
 			// 
@@ -294,7 +332,7 @@ namespace RackUI
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(674, 409);
+			this.ClientSize = new System.Drawing.Size(674, 461);
 			this.Controls.Add(this.panel1);
 			this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
 			this.Name = "MainForm";
@@ -329,6 +367,9 @@ namespace RackUI
 		private System.Windows.Forms.PictureBox sampleImage;
 		private System.Windows.Forms.Label labelLengthSupportValue;
 		private System.Windows.Forms.Label labelWidthRackValue;
+		private System.Windows.Forms.Label labelLengthStandValue;
+		private System.Windows.Forms.TextBox textBoxLengthStand;
+		private System.Windows.Forms.Label labelLengthStand;
 	}
 }
 

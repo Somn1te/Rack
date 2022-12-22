@@ -33,6 +33,12 @@
         /// <summary>
         /// Длина опоры стойки
         /// </summary>
-        LengthSupport
+        LengthSupport,
+        
+        /// <summary>
+        /// Длина подставки для обуви
+        /// </summary>
+        LengthStand
+
     }
 }

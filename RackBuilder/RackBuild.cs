@@ -40,6 +40,7 @@ namespace RackBuilder
 			CreateCrossbar();
 			CreateHooks();
 			CreateSupport();
+			CreateStand();
 		}
 
 		/// <summary>
@@ -180,6 +181,33 @@ namespace RackBuilder
 			CreateCircle(document2D,30,xCenter,yCenter);
 			sketchDefinition.EndEdit();
 			CreateExtrusion(_parameters.WidthRack, sketch);
+		}
+
+		/// <summary>
+		/// Метод постройки подставки для обуви 
+		/// </summary>
+		private void CreateStand()
+		{
+			var offset = -(_parameters.LengthSupport - 
+				((_parameters.LengthSupport - _parameters.WidthSupport) / 2));
+			var plane = ksObj3dTypeEnum.o3d_planeXOZ;
+			var yCenter = -75;
+			var xCenter = _parameters.LengthStand/2;
+			var amtStadndСrossbar = (int)(_parameters.LengthStand / 25);
+			var widthStandCrossbar = _parameters.LengthStand / amtStadndСrossbar;
+			ksEntity planeOffset = CreateOffsetPlane(offset, plane);
+			ksEntity sketch = CreateSketch(planeOffset, out var sketchDefinition);
+
+			ksDocument2D document2D = sketchDefinition.BeginEdit();
+
+			for (var standCrossbarIndex = 0; standCrossbarIndex <= amtStadndСrossbar; standCrossbarIndex++)
+			{
+				CreateCircle(document2D, 10, xCenter, yCenter);
+				xCenter = xCenter - widthStandCrossbar;
+			}
+			
+			sketchDefinition.EndEdit();
+			CreateExtrusion(_parameters.WidthSupport, sketch);
 		}
 
 		/// <summary>
